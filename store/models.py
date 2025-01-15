@@ -13,6 +13,9 @@ class Category(models.Model):
     
     name = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f'{self.name}'
+
 class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True)
@@ -29,3 +32,7 @@ class Product(models.Model):
         on_delete=models.CASCADE, # Se o usuário for excluido, todos os produtos relacionados também serão.
         blank=True, null=True
     )
+
+    def __str__(self):
+        
+        return f'{self.name} - {self.owner} - {self.category}'
