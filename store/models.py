@@ -3,7 +3,6 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 # Depois:
-# picture (imagem)
 # Retirar os campos "blank" e "null" dos Product.owner pois sempre terão donos.
 
 class Category(models.Model):
@@ -22,6 +21,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     amount = models.PositiveIntegerField()
     created_date = models.DateTimeField(default=timezone.now)
+    picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
     category = models.ForeignKey(
         Category,
         on_delete=models.SET_NULL,
