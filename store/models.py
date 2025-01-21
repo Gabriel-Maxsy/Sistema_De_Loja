@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 # Depois:
 # Retirar os campos "blank" e "null" dos Product.owner pois sempre terão donos.
+# Criar carrinho para usuario.
 
 class Category(models.Model):
     class Meta:
