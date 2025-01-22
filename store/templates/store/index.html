@@ -1,1 +1,7 @@
 {% extends "global/base.html" %}
+
+{% block content %}
+  {% for product in products %}
+    {{ product.name }}, R${{product.price}}, {{product.category}} <br><br>
+  {% endfor %}
+{% endblock content %}
