@@ -2,6 +2,6 @@
 
 {% block content %}
   {% for product in products %}
-    | <a href="">{{ product.id }}</a> | {{ product.name }} - R${{product.price}} - {{product.category}} | <br><br>
+    | <a href="{% url 'store:product' product.id %}">{{ product.id }}</a> | {{ product.name }} - R${{product.price}} - {{product.category}} | <br><br>
   {% endfor %}
 {% endblock content %}

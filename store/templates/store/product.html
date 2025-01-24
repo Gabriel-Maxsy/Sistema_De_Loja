@@ -1,0 +1,14 @@
+{% extends 'global/base.html' %}
+{% block content %}
+    <h1>
+        {{ product.name }}
+    </h1>
+
+    <p><b>ID:</b> {{ product.id }}</p>
+    <p><b>Price:</b> {{ product.price }}</p>
+    <p><b>Category:</b> {{ product.category }}</p>
+    <p><b>Owner:</b> {{ product.owner }}</p>
+    <p><b>Created Date:</b> {{ product.created_date }}</p>
+    <p><b>Description:</b> {{ product.description }}</p>
+
+{% endblock content %}
