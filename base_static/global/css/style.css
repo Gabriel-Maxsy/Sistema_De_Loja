@@ -1,14 +1,119 @@
-*{
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-h1{
-  padding: 20px;
-  margin-left: 5em;
+/* Paleta de cores */
+:root {
+  --background: #eaeaea;
+  --primary: #2196F3;
+  --secondary: #FF5722;
+  --text-primary: #222;
+  --text-secondary: #555;
+  --border: #bbb;
 }
 
-.content{
+/* Reset básico */
+body, h1, p, a {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.6;
   padding: 20px;
-  margin-left: 10em;
+}
+
+/* Cabeçalho e títulos */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+/* Layout principal */
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Grid de produtos */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Nome do produto */
+.product-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+/* Preço */
+.product-card .price {
+  font-size: 18px;
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Categoria */
+.product-card .category {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+/* Link para mais detalhes */
+.product-card a {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: var(--primary);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.product-card a:hover {
+  background-color: var(--secondary);
+  transform: scale(1.05);
+}
+
+/* Página do produto */
+.product-details {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.product-details p {
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+}
+
+.product-details b {
+  color: var(--text-primary);
 }

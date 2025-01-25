@@ -1,7 +1,18 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-  {% for product in products %}
-    | <a href="{% url 'store:product' product.id %}">{{ product.id }}</a> | {{ product.name }} - R${{product.price}} - {{product.category}} | <br><br>
-  {% endfor %}
+  <div class="product-grid">
+    {% for product in products %}
+      <div class="product-card">
+        {% if product.picture %}
+          <img src="{{ product.picture.url }}" alt="{{ product.name }}" width="120em">
+        {% else %}
+          <h2>{{ product.name }}</h2>
+        {% endif %}
+        <p class="price">R${{ product.price }}</p>
+        <p class="category">{{ product.category }}</p>
+        <a href="{% url 'store:product' product.id %}">Ver Detalhes</a>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock content %}
