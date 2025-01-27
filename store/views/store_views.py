@@ -7,6 +7,7 @@ def index(request):
     
     context = {
         'products': products,
+        'site_title': 'Products - ',
     }
 
     return render(
@@ -22,6 +23,7 @@ def product(request, product_id):
     )
     context = {
         'product': single_product,
+        'site_title': f'{single_product.name} - '
     }
     return render(
         request,
