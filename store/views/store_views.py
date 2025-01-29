@@ -1,13 +1,44 @@
-from django.shortcuts import render
 from store.models import Product
-from django.shortcuts import get_object_or_404, render
+from django.db.models import Q
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, render, redirect
 
 def index(request):
-    products = Product.objects.all().order_by('-id')[:10]
+    products = Product.objects.order_by('-id')[:10]
     
     context = {
         'products': products,
         'site_title': 'Products - ',
+    }
+
+    return render(
+        request,
+        'store/index.html',
+        context
+    )
+
+def search(request):             # Se o parâmetro "q" estiver vazio, retorne ''.
+    search_value = request.GET.get('q', '').strip()
+
+    if search_value == '':
+        return redirect('store:index')
+
+    products = Product.objects \
+        .filter(
+            Q(name__icontains=search_value) |
+            Q(category__name__icontains=search_value) |  # Busca pelo nome da categoria
+            Q(owner__username__icontains=search_value)   # Busca pelo nome do usuário
+        )\
+        .order_by('-id')
+    
+    # Redireciona se nenhum produto for encontrado
+    if not products.exists():
+        messages.warning(request, f'O produto/categoria/fornecedor "{search_value}" não foi encontrado.')
+        return redirect('store:index')
+    
+    context = {
+        'products': products,
+        'site_title': 'Search - ',
     }
 
     return render(
