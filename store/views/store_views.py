@@ -1,6 +1,6 @@
 from store.models import Product
 from django.db.models import Q
-from django.contrib import messages
+# from django.contrib import messages
 from django.shortcuts import get_object_or_404, render, redirect
 
 def index(request):
@@ -31,14 +31,15 @@ def search(request):             # Se o parâmetro "q" estiver vazio, retorne ''
         )\
         .order_by('-id')
     
-    # Redireciona se nenhum produto for encontrado
-    if not products.exists():
-        messages.warning(request, f'O produto/categoria/fornecedor "{search_value}" não foi encontrado.')
-        return redirect('store:index')
+    # # Redireciona se nenhum produto for encontrado (fiz de outra forma direto nos templates)
+    # if not products.exists():
+    #     messages.warning(request, f'O produto/categoria/fornecedor "{search_value}" não foi encontrado.')
+    #     return redirect('store:index')
     
     context = {
         'products': products,
         'site_title': 'Search - ',
+        'search_value': search_value,
     }
 
     return render(
