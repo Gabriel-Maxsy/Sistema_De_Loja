@@ -8,5 +8,6 @@ urlpatterns = [
     path('search/', views.search, name='search'), 
 
     # Product CRUD 
-    path('<int:product_id>/', views.product, name='product'),
+    path('<int:product_id>/', views.product, name='product'), # Read
+    path('product/create/', views.create, name='create') # Create
 ]
