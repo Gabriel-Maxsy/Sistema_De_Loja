@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404, render, redirect
 
 def index(request):
-    products = Product.objects.order_by('-id')[:10]
+    products = Product.objects.order_by('-id')
     
     context = {
         'products': products,
