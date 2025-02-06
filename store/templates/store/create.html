@@ -9,15 +9,14 @@
         {% csrf_token %}
 
         <div class="form-content">
-            <div class="form-group">
-                <label for="id_name">Name</label>
-                <input type="text" name="name" maxlength="255" id="id_name">
-            </div>
 
-            <div class="form-group">
-                <label for="id_description">Description</label>
-                <input type="text" name="description" maxlength="255" id="id_description">
-            </div>
+            {% for field in form %}
+                <div class="form-group">
+                    <label for={{ field.id_for_label}}>{{ field.label }}</label>
+                    {{ field }}
+                    {{ field.errors}}
+                </div>
+            {% endfor %}
 
         </div>
 
