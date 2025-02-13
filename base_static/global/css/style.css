@@ -247,3 +247,12 @@ body {
 .btn:hover {
   background: #0056b3;
 }
+
+/* mensagem de erro do formulário */
+
+.errorlist {
+  list-style: none;
+  font-size: small;
+  color: tomato;
+  padding: 0;
+}
