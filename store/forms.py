@@ -25,7 +25,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = models.Product
         fields = (
-            'name', 'price', 'description', 'amount',
+            'name', 'price', 'description', 'category', 'amount',
         )
 
         # widgets = {
@@ -37,6 +37,7 @@ class ProductForm(forms.ModelForm):
         #     )
         # }
 
+    # Se a validação depende de mais de um campo, use clean(self).
     def clean(self):
         cleaned_data = self.cleaned_data
         price = cleaned_data.get('price')
@@ -53,6 +54,7 @@ class ProductForm(forms.ModelForm):
         
         return super().clean()
     
+    # Se a validação for específica de um único campo, crie clean_nomeDoCampo().
     def clean_name(self):
        name = self.cleaned_data.get('name')
 
