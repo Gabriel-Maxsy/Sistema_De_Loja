@@ -1,12 +1,17 @@
 from store.forms import ProductForm
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import redirect, render
 
 def create(request):
     if request.method == 'POST':
+        form = ProductForm(request.POST)
 
         context = {
-            'form': ProductForm(request.POST)
+            'form': form 
         }
+
+        if form.is_valid():
+            form.save()
+            return redirect('store:create')
 
         return render(
             request,
