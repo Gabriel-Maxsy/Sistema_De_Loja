@@ -9,4 +9,25 @@
     <p><b>Created Date:</b> {{ product.created_date }}</p>
     <p><b>Description:</b> {{ product.description }}</p>
   </div>
+
+  <div class="product-links">
+    <a href="{% url 'store:update' product.id %}" class="btn btn-link">Update</a>
+
+    <form action="{% url 'store:delete' product.id %}" method="POST">
+      {% csrf_token %}
+
+      {% if confirmation == 'no' %}
+
+        <input type="hidden" name="confirmation" value="yes">
+        <button class="btn btn-link btn-delete" type="submit">Confirma?</button>
+      
+      {% else %}
+        
+        <button class="btn btn-link btn-delete" type="submit">Delete</button>
+      
+      {% endif %}
+
+    </form>
+
+  </div>
 {% endblock content %}

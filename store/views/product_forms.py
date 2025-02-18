@@ -69,3 +69,23 @@ def update(request, product_id):
         'store/create.html',
         context
     )
+
+def delete(request, product_id):
+    product = get_object_or_404(
+        Product, pk=product_id
+    )
+
+    confirmation = request.POST.get('confirmation', 'no')
+
+    if confirmation == 'yes':
+        product.delete()
+        return redirect('store:index')
+    
+    return render(
+        request,
+        'store/product.html',
+        {
+            'product': product,
+            'confirmation': confirmation,
+        }
+    )
