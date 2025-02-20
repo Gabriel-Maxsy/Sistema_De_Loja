@@ -6,6 +6,14 @@ from . import models
 
 class ProductForm(forms.ModelForm):
 
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                'accept': 'image/*',
+            }
+        )
+    )
+
     name = forms.CharField(
         widget=forms.TextInput(
             attrs={
@@ -27,7 +35,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = models.Product
         fields = (
-            'name', 'price', 'description', 'category', 'amount',
+            'name', 'price', 'description', 'category', 'amount', 'picture',
         )
 
         # widgets = {

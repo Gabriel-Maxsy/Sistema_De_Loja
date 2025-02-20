@@ -7,7 +7,7 @@ def create(request):
     form_action = reverse('store:create')
 
     if request.method == 'POST':
-        form = ProductForm(request.POST)
+        form = ProductForm(request.POST, request.FILES)
 
         context = {
             'form': form,
@@ -42,7 +42,7 @@ def update(request, product_id):
     form_action = reverse('store:update', args=(product_id,))
 
     if request.method == 'POST':
-        form = ProductForm(request.POST, instance=product)
+        form = ProductForm(request.POST, request.FILES, instance=product)
 
         context = {
             'form': form,

@@ -8,6 +8,13 @@
     <p><b>Owner:</b> {{ product.owner }}</p>
     <p><b>Created Date:</b> {{ product.created_date }}</p>
     <p><b>Description:</b> {{ product.description }}</p>
+
+    {% if product.picture %}
+      <p>
+        <img src="{{ product.picture.url }}" alt="{{ product.first_name }} {{ product.last_name }}">
+      </p>
+    {% endif %}
+
   </div>
 
   <div class="product-links">
