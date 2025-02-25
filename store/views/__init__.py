@@ -2,3 +2,4 @@
 
 from .product_forms import *
 from .store_views import *
+from .user_forms import *

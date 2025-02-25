@@ -1,5 +1,5 @@
 # ORGANIZAR ESTE FORMS, DELETAR TESTES DE CODIGOS COMO TESTES DE ERROS E COMENTARIOS.
-
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django import forms
 from . import models
@@ -78,3 +78,6 @@ class ProductForm(forms.ModelForm):
             )
         
        return name
+
+class RegisterForm(UserCreationForm):
+    ...
